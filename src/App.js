@@ -1,6 +1,9 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom';
 
+import Header from './components/Header';
+import Footer from './components/Footer';
+
 // Page Imports
 import Home from './pages/Home';
 import SearchResult from './pages/SearchResult';
@@ -12,6 +15,8 @@ import NoPage from './pages/NoPage';
 const App = () => {
   return (
     <div className="App">
+      <Header />
+
       <Routes>
         <Route path="/" element={<Home />}/>
         <Route path="/search/:id" element={<SearchResult />}/>
@@ -20,6 +25,8 @@ const App = () => {
         <Route path="/card/:id" element={<Card />}/>
         <Route path="*" element={<NoPage />}/>
       </Routes>
+
+      <Footer />
     </div>
   )
 }
