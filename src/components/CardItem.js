@@ -1,5 +1,5 @@
 import React from 'react';
-import './css/CardItem.css';
+// import './css/CardItem.css';
 
 const CardItem = ({ name, setName, avgSellPrice, tcgAvgSellPrice, imgSrc}) => {
   return (
