@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 
 import { fetchData } from './utils/fetchData';
 
@@ -17,6 +17,7 @@ import NoPage from './pages/NoPage';
 
 
 const App = () => {
+  const location = useLocation();
 
   // States
   const [search, setSearch] = useState("");
@@ -27,6 +28,12 @@ const App = () => {
   const [pages, setPages] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
   const [recentSearch, setRecentSearch] = useState("");
+
+
+  useEffect(() => {
+    window.scrollTo(0,0);
+  }, []);
+
 
   // Fetch Cards
   const url = "https://api.pokemontcg.io/v2/";
