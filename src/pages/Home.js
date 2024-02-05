@@ -1,12 +1,19 @@
 import React from 'react'
+import Searchbar from '../components/Searchbar';
 
-const Home = () => {
+const Home = ({ getCards, setRecentSearch, recentSearch, search, setSearch}) => {
   return (
     <div className="home-container">
       <div className="title-container">
         <h1>Pok&eacute;mon TCG Dex</h1>
         <h3>The Ultimate Pok&eacute;mon Card Database</h3>
-        {/* Put Searchbar Here */}
+        <Searchbar 
+          getCards={getCards} 
+          setRecentSearch={setRecentSearch} 
+          recentSearch={recentSearch}
+          search={search} 
+          setSearch={setSearch}
+        />
       </div>
 
       {/* Add decorative cards here */}
