@@ -1,8 +1,19 @@
-import React from 'react'
+import React from 'react';
+import './css/CardItem.css';
 
-const CardItem = () => {
+const CardItem = ({ name, setName, avgSellPrice, tcgAvgSellPrice, imgSrc}) => {
   return (
-    <div>CardItem</div>
+    <div
+      className="card-item hover-grow"
+    >
+      <img src={imgSrc} 
+        className="cardlist-image"
+        loading='lazy'
+      />
+      <span className="avg-price">Market Average: ${
+      avgSellPrice ? avgSellPrice.toFixed(2) : 'NA'
+      }</span>
+    </div>
   )
 }
 
