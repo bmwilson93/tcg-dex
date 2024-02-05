@@ -1,11 +1,11 @@
-import React from 'react'
-import { useState } from 'react';
+// Main App Components
+import { useState, useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 
-import { fetchData } from './utils/fetchData';
-
+// Component Imports
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Searchbar from './components/Searchbar';
 
 // Page Imports
 import Home from './pages/Home';
@@ -15,12 +15,12 @@ import Set from './pages/Set';
 import Card from './pages/Card';
 import NoPage from './pages/NoPage';
 
+import { fetchData } from './utils/fetchData';
 
-const App = () => {
+
+function App() {
   const location = useLocation();
 
-  // States
-  const [search, setSearch] = useState("");
   const [cards, setCards] = useState([]);
   const [sets, setSets] = useState([]);
   const [currentSet, setCurrentSet] = useState("");
@@ -29,14 +29,17 @@ const App = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [recentSearch, setRecentSearch] = useState("");
 
+  const [search, setSearch] = useState("");
+
 
   useEffect(() => {
-    window.scrollTo(0,0);
-  }, []);
+    console.log('Location changed');
+    window.scrollTo(0, 0);
+  }, [location]);
 
 
-  // Fetch Cards
   const url = "https://api.pokemontcg.io/v2/";
+
 
   // Call API to get results for search (search from Searchbar.js)
   const getCards = async (search, page=1) => {
@@ -53,14 +56,13 @@ const App = () => {
     if('error' in result) {
       console.log("found an error");
     } else { // No errors, set the data in states
-      // if result.data.length == 0 show a No results found message
       setCards(result.data);
       setCardCount(result.totalCount);
       setPages(Math.ceil(result.totalCount / result.pageSize));
       setCurrentPage(result.page);
     }
-  }
-  
+  } 
+
   const [searchbarState, setSearchbarState] = useState(
     <Searchbar 
       getCards={getCards} 
@@ -71,20 +73,20 @@ const App = () => {
 
   return (
     <div className="App">
-      <Header />
-
+      <Header getCards={getCards} setRecentSearch={setRecentSearch} recentSearch={recentSearch} searchbarState={searchbarState} search={search} setSearch={setSearch}/>
+      
       <Routes>
         <Route path="/" element={<Home getCards={getCards} setRecentSearch={setRecentSearch} recentSearch={recentSearch} search={search} setSearch={setSearch}/>} searchbarState={searchbarState}/>
-        <Route path="/search=/:id" element={<SearchResults cards={cards} currentPage={currentPage} pages={pages} getCards={getCards} recentSearch={recentSearch} cardCount={cardCount}/>} />
+        <Route path="/search=/:id" element={<SearchResult cards={cards} currentPage={currentPage} pages={pages} getCards={getCards} recentSearch={recentSearch} cardCount={cardCount}/>} />
         <Route path="/sets" element={<Sets sets={sets} setSets={setSets} setCurrentSet={setCurrentSet}/>} />
         <Route path="/set/:id" element={<Set currentSet={currentSet} setCurrentSet={setCurrentSet} cards={cards} setCards={setCards}/>} />
         <Route path="/card/:id" element={<Card />} />
         <Route path="*" element={<NoPage />} />
       </Routes>
 
-      <Footer />
+      <Footer searchbarState={searchbarState}/>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

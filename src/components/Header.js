@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+import Searchbar from './Searchbar';
 
 const Header = ({ getCards, setRecentSearch, recentSearch, searchbarState, search, setSearch}) => {
   const location = useLocation();
@@ -9,7 +10,7 @@ const Header = ({ getCards, setRecentSearch, recentSearch, searchbarState, searc
     <header>
         <div className="home-container">
           <Link to='/' className="header-home-link white-link">
-            <img src={logo} alt="logo" width="40px"/>
+            {/* <img src={logo} alt="logo" width="40px"/> */}
             <span className="header-title">Pok&eacute;mon TCG Dex</span>
           </Link>
 

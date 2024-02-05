@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 
-const Searchbar = () => {
+const Searchbar = ({ getCards, setRecentSearch, recentSearch, small=false, search, setSearch }) => {
 
   const navigate = useNavigate();
 
