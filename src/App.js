@@ -59,19 +59,27 @@ const App = () => {
       setPages(Math.ceil(result.totalCount / result.pageSize));
       setCurrentPage(result.page);
     }
-  } 
+  }
+  
+  const [searchbarState, setSearchbarState] = useState(
+    <Searchbar 
+      getCards={getCards} 
+      setRecentSearch={setRecentSearch} 
+      recentSearch={recentSearch}
+    />
+  )
 
   return (
     <div className="App">
       <Header />
 
       <Routes>
-        <Route path="/" element={<Home search={search} setSearch={setSearch}/>}/>
-        <Route path="/search/:id" element={<SearchResult />}/>
-        <Route path="/sets" element={<Sets />}/>
-        <Route path="/set/:id" element={<Set />}/>
-        <Route path="/card/:id" element={<Card />}/>
-        <Route path="*" element={<NoPage />}/>
+        <Route path="/" element={<Home getCards={getCards} setRecentSearch={setRecentSearch} recentSearch={recentSearch} search={search} setSearch={setSearch}/>} searchbarState={searchbarState}/>
+        <Route path="/search=/:id" element={<SearchResults cards={cards} currentPage={currentPage} pages={pages} getCards={getCards} recentSearch={recentSearch} cardCount={cardCount}/>} />
+        <Route path="/sets" element={<Sets sets={sets} setSets={setSets} setCurrentSet={setCurrentSet}/>} />
+        <Route path="/set/:id" element={<Set currentSet={currentSet} setCurrentSet={setCurrentSet} cards={cards} setCards={setCards}/>} />
+        <Route path="/card/:id" element={<Card />} />
+        <Route path="*" element={<NoPage />} />
       </Routes>
 
       <Footer />
