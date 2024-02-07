@@ -3,10 +3,10 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import CardList from '../components/CardList';
 import Loading from '../components/Loading';
+import './css/Set.css';
 
 import { fetchData } from '../utils/fetchData';
 
-// import './css/Set.css';
 
 const Set = ({ currentSet, setCurrentSet, cards, setCards }) => {
   const location = useLocation();
