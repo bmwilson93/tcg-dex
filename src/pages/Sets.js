@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Loading from '../components/Loading';
-// import './css/Sets.css'
+import './css/Sets.css'
 
 import { fetchData } from '../utils/fetchData';
 
