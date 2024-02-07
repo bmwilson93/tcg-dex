@@ -1,5 +1,6 @@
 import React from 'react'
 import Searchbar from '../components/Searchbar';
+import './css/Home.css'
 
 const Home = ({ getCards, setRecentSearch, recentSearch, search, setSearch}) => {
   return (
