@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import Searchbar from './Searchbar';
+import './css/Header.css';
 
 import logo from '../assets/Pokecoin.png';
 
