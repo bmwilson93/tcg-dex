@@ -16,7 +16,22 @@ const Home = ({ getCards, setRecentSearch, recentSearch, search, setSearch}) => 
         />
       </div>
 
-      {/* Add decorative cards here */}
+      {/* Decorateive Cards */}
+      <div className="decoration-container">
+
+        <div className="decoration-item decoration-left">
+          <img className="hover-grow" src="https://images.pokemontcg.io/g1/1.png" alt="" />
+        </div>
+
+        <div className="decoration-item decoration-middle">
+          <img className="hover-grow" src="https://images.pokemontcg.io/xy2/11.png" alt="" />
+        </div>
+
+        <div className="decoration-item decoration-right">
+          <img className="hover-grow" src="https://images.pokemontcg.io/g1/17.png" alt="" />
+        </div>
+
+      </div>
     </div>
   )
 }
