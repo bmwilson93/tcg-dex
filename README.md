@@ -1,5 +1,7 @@
 # TCG Dex
 
+![screenshot](tcg-dex-example.png)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 Uses the [pokemontcg.io](https://docs.pokemontcg.io/) API for all card and price data.
